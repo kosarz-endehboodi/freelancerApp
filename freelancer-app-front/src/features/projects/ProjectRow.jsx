@@ -1,4 +1,4 @@
-import { HiOutlineTrash } from "react-icons/hi";
+import { HiEye, HiOutlineTrash } from "react-icons/hi";
 import { TbPencilMinus } from "react-icons/tb";
 import Table from "../../ui/Table";
 import tolocaldateshort from "../../utils/toLocalDateShort";
@@ -8,7 +8,9 @@ import Modal from "../../UI/Modal";
 import { useState } from "react";
 import ConfrimDelete from "../../UI/ConfrimDelete";
 import useRemoveProject from "./useRemoveProject";
-
+import CreateProjectForm from "./CreateProjectForm"
+import ToggleProjectStatus from "./ToggleProjectStatus";
+import { Link } from "react-router-dom";
 
 
 export default function projectRow({ project, index }) {
@@ -30,9 +32,8 @@ export default function projectRow({ project, index }) {
             </td>
 
             <td>{project.freelancer?.name || "-"}</td>
-            <td>{project.status === "open" ?
-                (<span className="badge badge--success ">باز</span>) :
-                (<span className="badge badge--danger">بسته</span>)}
+            <td>
+                <ToggleProjectStatus project={project} />
             </td>
             <td>
                 <div className="flex items-center gap-x-4">
@@ -45,9 +46,9 @@ export default function projectRow({ project, index }) {
                         </button>
                         <Modal
                             onClose={() => SetIsEditOpen(false)}
-                            title="modal title"
+                            title={`ویرایش${project.title}`}
                             open={isEditOpen}>
-                            this is modal...
+                            <CreateProjectForm projectToEdit={project} onClose={() => SetIsEditOpen(false)} />
                         </Modal>
                     </>
 
@@ -66,16 +67,21 @@ export default function projectRow({ project, index }) {
                                 onclose={() => setDeleteOpen(false)}
                                 onConfirm={() =>
                                     removeProject(project._id, {
-                                      onSuccess: () => setDeleteOpen(false),
+                                        onSuccess: () => setDeleteOpen(false),
                                     })
-                                  }
-                                  disabled={isDeleting}
+                                }
+                                disabled={isDeleting}
 
                             />
                         </Modal>
                     </>
 
                 </div>
+            </td>
+            <td>
+                <Link to={project._id} className=" flex justify-center">
+                <HiEye className="w-5 h-5 text-primary-800"/>
+                </Link>
             </td>
         </Table.Row>
 

@@ -6,7 +6,7 @@ import ProjectRow from "./ProjectRow";
 export default function projectTable() {
 
     const { isLoading, projects } = useOwnerProjects();
-    console.log(projects)
+    // console.log(projects)
     //isloading =>loading
     //projects.lenght= 0 => empty ...
     if (isLoading) return <Loading />
@@ -23,7 +23,7 @@ export default function projectTable() {
                 <th>فریلنسر</th>
                 <th>وضعیت</th>
                 <th>عملیات</th>
-
+                <th>درخواست ها</th>
             </Table.Header>
             <Table.Body>
                 {projects.map((project, index) => (

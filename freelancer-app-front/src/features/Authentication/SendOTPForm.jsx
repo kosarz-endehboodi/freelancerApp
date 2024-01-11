@@ -1,6 +1,4 @@
-
 import TextField from "../../UI/TextField"
-
 import Loading from "../../UI/Loading"
 
 export default function sendOTPForm({ onSubmit, isSendingOtp, register }) {

@@ -8,7 +8,7 @@ import useOwnerProjects from "./useOwnerProjects"
 export default function projectTable() {
 
     const { isLoading, projects } = useOwnerProjects();
-    console.log(projects)
+    
     //isloading =>loading
     //projects.lenght= 0 => empty ...
     if (isLoading) return <Loading />

@@ -2,7 +2,6 @@ import RadioInput from "./RadioInput";
 
 export default function RadioInputGroup({ register, watch, errors, configs }) {
 
-
     const { name, validationSchema = {}, options } = configs;
 
     return (

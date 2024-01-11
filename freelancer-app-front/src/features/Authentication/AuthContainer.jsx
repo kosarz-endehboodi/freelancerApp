@@ -10,21 +10,21 @@ import { useForm } from "react-hook-form";
 export default function authContainer() {
 
     const { isPending: isSendingOtp,
-        data: otpResponse,
-        mutateAsync } = useMutation({
-            mutationFn: getOtp,
-        })
+        mutateAsync,
+        data: otpResponse
+    } = useMutation({
+        mutationFn: getOtp,
+    })
 
-        const sendOtpHandler = async (data) => {
-           
-            try {
-              const { message } = await mutateAsync(data)
-              setStep(2);
-              toast.success(message);
-            } catch (error) {
-              toast.error(error?.response?.data?.message);
-            }
-          };
+    const sendOtpHandler = async (data) => {
+        try {
+            const { message } = await mutateAsync(data)
+            setStep(2);
+            toast.success(message);
+        } catch (error) {
+            toast.error(error?.response?.data?.message);
+        }
+    };
 
     const [step, setStep] = useState(1);
     const { register, handleSubmit, getValues } = useForm();
@@ -33,7 +33,7 @@ export default function authContainer() {
     const renderstep = () => {
         switch (step) {
             case 1:
-                return <SendOTPForm
+                return (<SendOTPForm
                     isSendingOtp={isSendingOtp}
                     onSubmit={handleSubmit(sendOtpHandler)}
                     // onChange={(e) => setPhoneNumber(e.target.value)}
@@ -44,25 +44,23 @@ export default function authContainer() {
 
                 //onSubmit,isSendingOtp,onChange,phoneNumber
 
-                />;
+                />);
+
             case 2:
-                return <CheckOTPForm
+                return (<CheckOTPForm
                     onResendOtp={sendOtpHandler}
                     onBack={() => setStep((s) => s - 1)}
                     // phoneNumber={phoneNumber}
                     phoneNumber={getValues("phoneNumber")}
                     otpResponse={otpResponse}
                 />
+                );
             default:
-                return null
+                return null;
         }
     }
 
 
-    return (
-        <div className="w-full sm:max-w-sm">
-            {renderstep()}
-
-        </div>
-    )
+    return <div className="w-full sm:max-w-sm"> {renderstep()}</div>
+    
 }
