@@ -5,10 +5,11 @@ import { Toaster } from "react-hot-toast";
 import CompleteProfile from "./pages/CompleteProfile";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import Owner from "./pages/Owner"
-import AppLayout from "./UI/AppLayout";
 import Projects from "./pages/Projects";
 import Project from "./pages/Project";
+import { DarkModeProvider } from "./features/Context/DarkmodeContext";
+import OwnerLayout from "./features/Owner/OwnerLayout";
+import Ownerdashboard from "./pages/OwnerDashboard";
 
 const queryClient = new QueryClient();
 function App() {
@@ -17,21 +18,23 @@ function App() {
   return (
 
     <>
-      <QueryClientProvider client={queryClient}>
-        <Toaster />
-        <Routes>
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/complete-profile" element={<CompleteProfile />} />
-          <Route path="/owner" element={<AppLayout />} >
-            <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="dashboard" element={<Owner />} />
-            <Route path="projects" element={<Projects />} />
-            <Route path="projects/:id" element={<Project />} />
-          </Route>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </QueryClientProvider>
+      <DarkModeProvider>
+        <QueryClientProvider client={queryClient}>
+          <Toaster />
+          <Routes>
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/complete-profile" element={<CompleteProfile />} />
+            <Route path="/owner" element={<OwnerLayout />} >
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<Ownerdashboard />} />
+              <Route path="projects" element={<Projects />} />
+              <Route path="projects/:id" element={<Project />} />
+            </Route>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </QueryClientProvider>
+      </DarkModeProvider>
     </>
   )
 }

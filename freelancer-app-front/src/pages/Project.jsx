@@ -6,13 +6,17 @@ import ProposalTable from "../features/Project/ProposalTable";
 export default function project() {
 
     //fetch single project data 
-    const { isLoading, data: project } = useProject()
+    const { isLoading, data } = useProject()
+    const { project } = data || {};
+
+
+
     console.log(project)
     if (isLoading) return <Loading />;
     return (
         <div>
-            <ProjectHeader project={project}/>
-            <ProposalTable proposals={project.proposals}/>
+            <ProjectHeader project={project} />
+            <ProposalTable proposals={project.proposals} />
         </div>
     )
 } 

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import { fontFamily } from "tailwindcss/defaultTheme";
- 
+
 
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
@@ -15,7 +15,8 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  ], 
+  darkMode: ['class', '[class="dark-mode"]'],
   theme: {
     extend: {
       colors: {
