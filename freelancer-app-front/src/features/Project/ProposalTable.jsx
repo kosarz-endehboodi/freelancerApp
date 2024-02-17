@@ -1,12 +1,14 @@
-import Empty from "../../UI/Empty"
-import Table from "../../ui/Table"
-import ProposalRow from "./ProposalRow"
-export default function proposalTable({ proposals, index }) {
+import Empty from "../../UI/Empty";
+import Table from "../../ui/Table";
+import ProposalRow from "./ProposalRow";
+
+
+export default function proposalTable({ proposals }) {
 
     if (!proposals.length) return <Empty resoureName="درخواستی" />
     return (
         <Table >
-            <Table.Header className="flex justify-around p-4" >
+            <Table.Header  >
                 
                     <th >#</th>
                     <th>فریلنسر</th>

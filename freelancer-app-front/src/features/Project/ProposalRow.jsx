@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Table from "../../ui/Table";
-import truncateText from "../../utils/truncateText";
+import truncateText from "../../utils/trancateText";
 import Modal from "../../UI/Modal"
 import ChangeProposalStatus from "./ChangeProposalStatus";
+
+
 const statusStyle = [
     {
         label: "رد شده",

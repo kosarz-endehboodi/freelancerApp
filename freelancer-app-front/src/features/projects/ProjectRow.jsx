@@ -3,7 +3,7 @@ import { TbPencilMinus } from "react-icons/tb";
 import Table from "../../ui/Table";
 import tolocaldateshort from "../../utils/toLocalDateShort";
 import { toPersianNumberWithcomma } from "../../utils/toPersianNumbers";
-import truncateText from "../../utils/truncateText";
+import truncateText from "../../utils/trancateText";
 import Modal from "../../UI/Modal";
 import { useState } from "react";
 import ConfrimDelete from "../../UI/ConfrimDelete";

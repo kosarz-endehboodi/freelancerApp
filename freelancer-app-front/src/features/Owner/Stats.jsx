@@ -3,7 +3,7 @@ import {
     HiCurrencyDollar,
     HiOutlineViewGrid,
   } from "react-icons/hi";
-  import Stat from "./Stat";
+  import Stat from "../../UI/Stat";
   
 export default function Stats({ projects }) {
     const numOfProjects = projects.length;
