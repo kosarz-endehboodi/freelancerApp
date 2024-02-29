@@ -5,17 +5,18 @@ export default function useCategories() {
   const { data, isLoading } = useQuery({
     queryKey: ["categories"],
     queryFn: getCategoriesApi,
+    retry:false,
   });
   //{id,title,entitle}
-  const { categories: rawCategories =[] } = data || {};
-  const categories = rawCategories.map((item) => ({
+  const { categories =[] } = data || {};
+  const newcategories = categories.map((item) => ({
     label: item.title,
     value: item._id,
   }));
-  const transformedCategories = rawCategories.map((item) => ({
+  const transformedCategories = categories.map((item) => ({
     label: item.title,
     value: item.englishTitle,
   }));
 
-  return{isLoading,categories,transformedCategories}
+  return{isLoading, categories:newcategories,transformedCategories}
 }
