@@ -11,7 +11,7 @@ export default function ProjectTable() {
     //isloading =>loading
     //projects.lenght= 0 => empty ...
     if (isLoading) return <Loading />
-    if (!projects.length) return <Empty resourceName="پروژه" />
+    if (!projects.length) return <Empty resourceName="پروژه ای" />
     return (
         <Table>
             <Table.Header>
